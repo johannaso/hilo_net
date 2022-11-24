@@ -1,7 +1,7 @@
 close all;
 clear all;
 % Specify the folder where the files live.
-files=dir('/Users/johanna/Desktop/Oberseminar/image_database/Nuclei/**/*.jpg'); 
+files=dir('/Users/johanna/Desktop/hilo_net/new_synthetic/image_database/Nuclei/**/*.jpg'); 
 
 foregroundImageArray = files(1:2:end);
 backgroundImageArray = files(2:2:end);
@@ -22,9 +22,9 @@ for i = 1:100
     [groundTruth,uniformWithBackground, struc] = syntheticHilo(foregroundImage, backgroundImage);
 
     %save images
-    path_uni = '/Users/johanna/Desktop/Oberseminar/synthetic_data/uniform/';
-    path_struc = '/Users/johanna/Desktop/Oberseminar/synthetic_data/structured/';
-    path_groundt = '/Users/johanna/Desktop/Oberseminar/synthetic_data/ground_truth/';
+    path_uni = '/Users/johanna/Desktop/hilo_net/new_synthetic/synthetic_data/uniform/';
+    path_struc = '/Users/johanna/Desktop/hilo_net/new_synthetic/synthetic_data/structured/';
+    path_groundt = '/Users/johanna/Desktop/hilo_net/new_synthetic/synthetic_data/ground_truth/';
 
 
     name_uni = append('uni_', int2str(i),'.png');

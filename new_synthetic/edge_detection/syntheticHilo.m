@@ -29,7 +29,7 @@ function [groundTruth,uniformWithBackground, struc] = syntheticHilo(foregroundIm
     %imshow(BWfinal);
     
     %find random numer of object at random spot
-    numberOfObjects = randi([7 12],1,1);
+    numberOfObjects = randi([10 20],1,1);
     
     
     [whiteRows, whiteColumns] = find(BWfinal);
@@ -127,16 +127,16 @@ function [groundTruth,uniformWithBackground, struc] = syntheticHilo(foregroundIm
     sfg = size(maskedCheckerpattern);
     vol = radgrad(sfg,[0.5 0.3],0.7,[20 20 50; 169 250 89],'ease','uint8');
     maskedCheckerpattern = imflatfield(maskedCheckerpattern,50);
-    %maskedCheckerpattern = imtweak(maskedCheckerpattern,'hsl',[0 0.5 1]);
-    maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'overlay',1.5);
+    maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'multiply');
+    %maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'overlay',1.5);
     struc = maskedCheckerpattern + im2double(uniformWithBackground);
     
     
-    figure();
-    subplot(2,2,1),imshow(foregroundImage),title('Original Image');
-    subplot(2,2,2),imshow(uniformWithBackground),title('Uniform Image');
-    subplot(2,2,3),imshow(struc),title('Structured Image');
-    subplot(2,2,4),imshow(groundTruth),title('HiLo/Groundtruth Image');
+%     figure();
+%     subplot(2,2,1),imshow(foregroundImage),title('Original Image');
+%     subplot(2,2,2),imshow(uniformWithBackground),title('Uniform Image');
+%     subplot(2,2,3),imshow(struc),title('Structured Image');
+%     subplot(2,2,4),imshow(groundTruth),title('HiLo/Groundtruth Image');
 
 
 

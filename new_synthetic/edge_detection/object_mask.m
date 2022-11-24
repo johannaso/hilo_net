@@ -138,10 +138,10 @@ imshow(maskedCheckerpattern);
 
 % use MIMT tools to fudge the lighting color lazily
 sfg = size(maskedCheckerpattern);
-vol = radgrad(sfg,[0.5 0.3],0.7,[20 20 50; 169 250 89],'ease','uint8');
+vol = radgrad(sfg,[0.5 0.3],0.7,[20 20 50; 169 250 89],'softease','uint8');
 maskedCheckerpattern = imflatfield(maskedCheckerpattern,50);
-%maskedCheckerpattern = imtweak(maskedCheckerpattern,'hsl',[0 0.5 1]);
-maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'overlay',1.5);
+maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'multiply');
+%maskedCheckerpattern = imblend(vol,maskedCheckerpattern,1,'overlay',1.5);
 struc = maskedCheckerpattern + im2double(uniformWithBackground);
 
 
